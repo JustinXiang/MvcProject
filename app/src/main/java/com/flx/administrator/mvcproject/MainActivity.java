@@ -1,5 +1,6 @@
 package com.flx.administrator.mvcproject;
 
+import android.Manifest;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,10 +14,14 @@ import com.flx.administrator.mvcproject.net.HttpManager;
 import com.flx.administrator.mvcproject.net.RetrofitHelper;
 import com.flx.administrator.mvcproject.net.api.ApiParam;
 import com.flx.administrator.mvcproject.net.api.CallBack;
+import com.flx.administrator.mvcproject.utils.ToastUtils;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
 
 
 public class MainActivity extends BaseActivity implements CallBack {
@@ -36,7 +41,19 @@ public class MainActivity extends BaseActivity implements CallBack {
     @Override
     protected void onLogicCreate(View view) {
         listview = $(R.id.listview);
-        getData();
+        RxPermissions rxPermissions =new RxPermissions(this);
+        rxPermissions.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(new Consumer<Permission>() {
+                    @Override
+                    public void accept(Permission permission) throws Exception {
+                        if(permission.granted){
+                            getData();
+                        }else {
+                            ToastUtils.showToast("权限申请失败");
+                        }
+                    }
+                });
+
     }
 
     private void getData() {

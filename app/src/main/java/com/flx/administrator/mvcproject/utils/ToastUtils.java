@@ -99,7 +99,7 @@ public class ToastUtils {
     }
 
     public static void showToast(String content){
-        Toast.makeText(App.getInstance(),content,Toast.LENGTH_SHORT);
+        Toast.makeText(App.getInstance(),content,Toast.LENGTH_SHORT).show();
     }
 
 
