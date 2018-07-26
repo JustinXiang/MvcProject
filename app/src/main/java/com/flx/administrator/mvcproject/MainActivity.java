@@ -1,7 +1,6 @@
 package com.flx.administrator.mvcproject;
 
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -15,7 +14,6 @@ import com.flx.administrator.mvcproject.net.RetrofitHelper;
 import com.flx.administrator.mvcproject.net.api.ApiParam;
 import com.flx.administrator.mvcproject.net.api.CallBack;
 
-import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Observable;
