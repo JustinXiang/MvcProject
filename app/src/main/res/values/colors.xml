@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="navigation_color">#3F51B5</color>
+    <color name="color_toptitle">#fafafa</color>
+    <color name="white">#ffffff</color>
+    <color name="color_e2e2e2">#e2e2e2</color>
+    <color name="color_1f1f1f">#1f1f1f</color>
+    <color name="color_646464">#646464</color>
+    <color name="color_b8b8b8">#b8b8b8</color>
+    <color name="color_2cd4c7">#2cd4c7</color>
+    <color name="tab_select">#2cd4c7</color>
+    <color name="tab_normal">#979797</color>
+    <color name="corlor_f5f5f5">#f5f5f5</color>
+    <color name="color_dadada">#dadada</color>
+    <color name="color_080808">#080808</color>
+    <color name="color_fafafa">#fafafa</color>
+    <color name="color_949494">#949494</color>
+    <color name="translucent">#00000000</color>
+    <color name="black_65_percent">#A5000000</color>
+    <color name="color_2e75ad">#2e75ad</color>
+    <color name="color_7c7c7c">#7c7c7c</color>
+    <color name="color_d3d3d3">#D3D3D3</color>
+    <color name="color_4cd2cf">#4cd2cf</color>
+    <color name="color_5ea8ff">#5ea8ff</color>
+    <color name="light_black">#333333</color>
+    <color name="color_63b2ca">#63b2ca</color>
+    <color name="color_36f4ff">#36f4ff</color>
+    <color name="color_dbdbdb">#dbdbdb</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_616161">#616161</color>
+    <color name="color_262626">#262626</color>
+    <color name="color_010101">#010101</color>
+</resources>
