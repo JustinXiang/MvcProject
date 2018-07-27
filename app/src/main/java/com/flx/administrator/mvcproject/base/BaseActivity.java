@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.flx.administrator.mvcproject.R;
 import com.flx.administrator.mvcproject.manager.AppManager;
 import com.flx.administrator.mvcproject.manager.TitleManager;
+import com.flx.administrator.mvcproject.utils.ToastUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.io.Serializable;
@@ -27,6 +28,19 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     private LinearLayout layout;
     private View bodyView;
     private TitleManager titleManager;
+    /**
+     * 是否需要关闭app
+     */
+    protected boolean mNeedFinishApp = false;
+    /**
+     * 上次点击<返回>键的时间
+     */
+    protected long lastEventTime;
+    /**
+     * 允许两次点击<返回>键的时间差
+     */
+    protected static int TIME_TO_WAIT = 3 * 1000;
+
     /**
      * 返回一个Title的View
      *
@@ -135,6 +149,25 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         if (token != null) {
             InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             im.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例
+        if (mNeedFinishApp) {
+            long currentEventTime = System.currentTimeMillis();
+            if ((currentEventTime - lastEventTime) > TIME_TO_WAIT) {// 提示再按一次退出应用
+                ToastUtils.show(this, "请再按一次Back键退出", TIME_TO_WAIT);
+                lastEventTime = currentEventTime;
+            } else {
+                finish();
+                android.os.Process.killProcess(android.os.Process.myPid());// 关闭软件所有线程
+                Runtime.getRuntime().gc();// 通知Java虚拟机回收垃圾
+            }
+        } else {
+            super.onBackPressed();
+            finish();
         }
     }
 }
